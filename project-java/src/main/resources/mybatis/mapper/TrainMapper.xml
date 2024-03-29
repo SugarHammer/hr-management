@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.TrainMapper">
+
+    <insert id="add" parameterType="train">
+        insert into train (`name`, introduce, `start`, `end`, state, `count`)
+        values (#{name}, #{introduce}, #{start}, #{end}, #{state}, #{count})
+    </insert>
+
+    <update id="edit" parameterType="train">
+        update train set `name` = #{name}, introduce = #{introduce}, `start` = #{start},
+        `end` = #{end}, state = #{state}, `count` = #{count}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from train where id = #{id}
+    </delete>
+
+    <select id="queryList" resultType="train">
+        select * from train
+    </select>
+
+    <select id="queryById" resultType="train" parameterType="int">
+        select * from train
+        where id = #{id}
+    </select>
+
+</mapper>

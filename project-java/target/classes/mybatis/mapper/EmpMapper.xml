@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.EmpMapper">
+
+    <insert id="add" parameterType="emp">
+        insert into emp (`name`, sex, card, phone, university, major, education, address, `position`, dept, `create`)
+        values (#{name}, #{sex}, #{card}, #{phone}, #{university}, #{major}, #{education}, #{address}, #{position}, #{dept}, #{create})
+    </insert>
+
+    <update id="edit" parameterType="emp">
+        update emp set `name` = #{name}, sex = #{sex}, card = #{card}, phone = #{phone}, university = #{university},
+        major = #{major}, education = #{education}, address = #{address}, `position` = #{position}, dept = #{dept}, `create` = #{create}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from emp where id = #{id}
+    </delete>
+
+    <select id="queryList" resultType="emp">
+        select * from emp
+    </select>
+
+    <select id="queryById" parameterType="int" resultType="emp">
+        select * from emp
+        where id = #{id}
+    </select>
+
+    <select id="queryByName" parameterType="string" resultType="emp">
+        select * from emp
+        where name = #{name}
+    </select>
+
+    <select id="listByName" parameterType="string" resultType="emp">
+        select * from emp
+        where name != '魏新贺'
+    </select>
+
+    <select id="queryNum" resultType="com.wey.vo.PieVO">
+        select count(*) as 'value', sex as 'name' from emp group by sex
+    </select>
+
+</mapper>

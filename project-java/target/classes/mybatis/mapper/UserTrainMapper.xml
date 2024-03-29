@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.UserTrainMapper">
+
+    <insert id="add" parameterType="userTrain">
+        insert into user_train (username, tid)
+        values (#{username}, #{tid})
+    </insert>
+
+    <update id="edit" parameterType="userTrain">
+        update user_train set username = #{username}, tid = #{tid}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user_train where id = #{id}
+    </delete>
+
+    <select id="queryList" resultType="userTrain">
+        select u.id, u.username, e.position, e.dept, t.name, t.introduce
+        from user_train u join train t
+        on u.tid = t.id
+        join emp e
+        on u.username = e.name
+    </select>
+
+    <select id="listByTid" parameterType="int" resultType="userTrain">
+        select * from user_train
+        where tid = #{tid}
+    </select>
+
+    <select id="queryByName" parameterType="string" resultType="userTrain">
+        select u.id, `name`, introduce, start, `end`
+        from user_train u join train t
+        on u.tid = t.id
+        where username = #{username}
+    </select>
+
+    <select id="queryById" parameterType="int" resultType="userTrain">
+        select * from user_train
+        where id = #{id}
+    </select>
+
+</mapper>

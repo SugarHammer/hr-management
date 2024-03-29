@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.UserMapper">
+
+    <!--查询所有用户信息-->
+    <select id="queryList" resultType="User">
+        select * from user
+        where username != 'admin'
+        order by id desc
+    </select>
+
+    <insert id="addUser" parameterType="User">
+        insert into user (username, password, phone, `create`, role)
+        values (#{username}, #{password}, #{phone}, #{create}, #{role})
+    </insert>
+
+    <select id="queryByName" parameterType="String" resultType="User">
+        select * from user
+        where username = #{username}
+    </select>
+
+    <update id="edit" parameterType="user">
+        update user set username = #{username}, password = #{password}, phone = #{phone}, `create` = #{create}, role = #{role}
+        where id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.SalaryMapper">
+
+    <insert id="add" parameterType="salary">
+        insert into salary (`name`, `position`, dept, pay, bonus, `sum`, tax, insurance, salary, `release`)
+        values (#{name}, #{position}, #{dept}, #{pay}, #{bonus}, #{sum}, #{tax}, #{insurance}, #{salary}, #{release})
+    </insert>
+
+    <update id="edit" parameterType="salary">
+        update salary set `name` = #{name}, `position` = #{position}, dept = #{dept}, pay = #{pay}, bonus = #{bonus},
+        `sum` = #{sum}, tax = #{tax}, insurance = #{insurance}, salary = #{salary}, `release` = #{release}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from salary where id = #{id}
+    </delete>
+
+    <select id="queryList" resultType="salary">
+        select * from salary
+        order by id desc 
+    </select>
+
+    <select id="queryByName" parameterType="string" resultType="salary">
+        select * from salary
+        where name = #{name}
+        order by id desc
+    </select>
+
+</mapper>

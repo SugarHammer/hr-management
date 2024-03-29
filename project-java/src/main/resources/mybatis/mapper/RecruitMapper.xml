@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.RecruitMapper">
+
+    <insert id="addRecruit" parameterType="recruit">
+        insert into recruit (`name`, `type`, address, nature, `describe`, `require`, `number`)
+        values (#{name}, #{type}, #{address}, #{nature}, #{describe}, #{require}, #{number})
+    </insert>
+
+    <update id="edit" parameterType="recruit">
+        update recruit set `name` = #{name}, `type` = #{type}, address = #{address}, nature = #{nature}, `describe` = #{describe}, `require` = #{require}, `number` = #{number}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from recruit where id = #{id}
+    </delete>
+
+    <select id="queryList" resultType="recruit">
+        select * from recruit
+    </select>
+
+</mapper>

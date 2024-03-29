@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.UserRecruitMapper">
+
+    <insert id="add" parameterType="userRecruit">
+        insert into user_recruit (username, sex, phone, address, education, rid, state, university, major, filename, fileurl, newname)
+        values (#{username}, #{sex}, #{phone}, #{address}, #{education}, #{rid}, #{state}, #{university}, #{major}, #{filename}, #{fileurl}, #{newname})
+    </insert>
+
+    <update id="edit" parameterType="userRecruit">
+        update user_recruit set username = #{username}, sex = #{sex}, phone = #{phone}, address = #{address},
+        education = #{education}, rid = #{rid}, state = #{state}, university = #{university}, major = #{major},
+        filename = #{filename}, fileurl = #{fileurl}, newname = #{newname}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from user_recruit where id = #{id}
+    </delete>
+
+    <select id="queryList" resultType="userRecruit">
+        select u.id, username, sex, phone, u.address, university, major, education, rid, state, `name`, nature,
+        `type`, r.address as gaddress, `describe`, `require`, filename, fileurl, newname
+        from user_recruit u join recruit r
+        on r.id = u.rid
+        order by u.id desc
+    </select>
+
+    <select id="queryByName" resultType="userRecruit" parameterType="string">
+        select u.id, username, sex, phone, u.address, university, major, education, rid, state, `name`, nature,
+        `type`, r.address as gaddress, `describe`, `require`, filename, fileurl, newname
+        from user_recruit u join recruit r on r.id = u.rid
+        where username = #{username}
+    </select>
+
+    <!--根据id查询-->
+    <select id="queryById" parameterType="int" resultType="userRecruit">
+        select * from user_recruit
+        where rid = #{rid}
+    </select>
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wey.mapper.DeptMapper">
+
+    <insert id="add" parameterType="dept">
+        insert into dept (deptno, `name`, introduce, `count`)
+        values (#{deptno}, #{name}, #{introduce}, #{count})
+    </insert>
+
+    <update id="edit" parameterType="dept">
+        update dept set deptno = #{deptno}, `name` = #{name}, introduce = #{introduce}, `count` = #{count}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from dept where id = #{id}
+    </delete>
+
+    <select id="queryList" resultType="dept">
+        select * from dept
+    </select>
+
+    <select id="queryByName" parameterType="string" resultType="dept">
+        select * from dept
+        where name = #{name}
+    </select>
+
+</mapper>
