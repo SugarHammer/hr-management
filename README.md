@@ -26,11 +26,12 @@ SpringBoot+Mybatis+Vue+Mysql
 ![输入图片说明](photo/%E5%8A%9F%E8%83%BD%E5%9B%BE.png)
 
 ### 部分功能演示
+
+#### 普通用户功能
+![输入图片说明](photo/%E6%99%AE%E9%80%9A%E7%94%A8%E6%88%B7%E5%8A%9F%E8%83%BD.gif)
+
 #### 管理员功能
 ![输入图片说明](photo/%E7%AE%A1%E7%90%86%E5%91%98%E5%8A%9F%E8%83%BD-1.gif)
-
-#### 代码数据库
-![输入图片说明](photo/%E4%BB%A3%E7%A0%81%E6%95%B0%E6%8D%AE%E5%BA%93.gif)
 
 ### 环境需求(可免费提供)
 - idea/eclipse、jdk-1.8、maven-3.8.6、mysql、node.js
